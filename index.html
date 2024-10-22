@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: UberMove, UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .content {
+            width: 100%;
+            height: 100%;
+        }
+
+        .navbar {
+            padding: 10px 6%;
+            background-color: #000;
+        }
+
+        .navbar .logo-links {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .logo-links .logo {
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            padding-bottom: 5px;
+        }
+
+        .logo-links .nav-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-direction: row;
+            flex: 1 1 auto;
+            list-style: none;
+            padding-left: 50px;
+        }
+
+        .navigation li,
+        .navi li {
+            list-style: none;
+        }
+
+        .logo-links .nav-links li a,
+        .navigation li a,
+        .navi li a {
+            text-decoration: none;
+        }
+
+        .nav-links button,
+        .navi button {
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            color: #fff;
+            background-color: #000;
+        }
+
+        .nav-links button:hover,
+        .navi button:hover {
+            background: #cac9c980;
+            transition: 1s;
+        }
+        .navi{
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        button.btn {
+            background-color: #fff;
+            color: #000;
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        .btn button:hover {
+            background-color: rgb(211, 205, 205);
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            border: none;
+            outline: none;
+            color: white;
+            padding: 10px;
+            font-family: UberMove, UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: 0;
+            border-radius: 20px;
+
+        }
+
+        .dropdown .dropbtn i {
+            font-size: 10px;
+        }
+
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: rgb(32, 31, 31);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .content1 {
+            width: 100%;
+            margin: auto;
+            display: flex;
+            padding: 64px;
+        }
+
+        .img1 iframe {
+            width: 100%;
+        }
+
+        .text1 {
+            width: 50%;
+            font-size: 20px;
+            color: #504b4b;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .img1 {
+            width: 50%;
+        }
+
+        .text1 i h5 {
+
+            display: flex;
+            font-size: 700px;
+            font-weight: 50px;
+        }
+
+        .int input {
+            display: flex;
+            flex-direction: column;
+            background-color: whitesmoke;
+            border-radius: 10px;
+            border: none;
+            width: 357px;
+            margin: 15px 0px;
+            height: 50px;
+            text-indent: 25px;
+        }
+
+        .cal {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0px;
+        }
+
+        .Today input {
+            width: 173px;
+            height: 50px;
+            text-indent: 12px;
+            background-color: whitesmoke;
+            border-radius: 10px;
+            border: none;
+        }
+
+        .now select {
+            width: 173px;
+            height: 50px;
+            text-indent: 30px;
+            background-color: whitesmoke;
+            border-radius: 10px;
+            border: none;
+        }
+
+        .now {
+            position: relative;
+        }
+
+        .clock {
+            position: absolute;
+            top: 17px;
+            left: 14px;
+            font-size: 15px;
+        }
+
+        .drop {
+            position: absolute;
+            top: 20%;
+            right: 15px;
+            font-size: 30px;
+        }
+
+        .pick {
+            width: 357px;
+            height: 50px;
+            position: relative;
+        }
+
+        .location {
+            width: 257px;
+            height: 50px;
+            position: relative;
+        }
+
+        .dot {
+            position: absolute;
+            top: 20px;
+            left: 8px;
+            font-size: 10px;
+        }
+
+        .square {
+            position: absolute;
+            top: 20px;
+            left: 8px;
+            font-size: 10px;
+        }
+
+        #btn button {
+            position: relative;
+            padding: 15px 20px 15px 20px;
+            background-color: black;
+            color: #fff;
+            border-radius: 8px;
+            border: none;
+            font-size: 17px;
+        }
+
+        #btn button:hover {
+            background-color: rgb(32, 31, 31);
+            cursor: pointer;
+        }
+
+        .text1 select {
+            display: flex;
+        }
+
+        .content2 {
+            width: 95%;
+            margin: auto;
+            display: flex;
+            gap: 80px;
+            padding: 64px;
+        }
+
+        .img2 {
+            width: 100%;
+        }
+
+        .img2 img {
+            width: 100%;
+        }
+
+        .text2 {
+            width: 40%;
+            margin: auto;
+
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            /* padding-left: 64px;
+            padding-right: 64px; */
+        }
+
+        .text2 h1 {
+            font-family: UberMove, UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 50px;
+            font-weight: bolder;
+        }
+
+        .text2 p {
+            font-size: 19px;
+            font-family: UberMove, UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .text2 button {
+            padding: 15px;
+            background-color: black;
+            color: #fff;
+            border-radius: 8px;
+            border: none;
+            font-size: 17px;
+        }
+
+        .btn button:hover {
+            background-color: rgb(32, 31, 31);
+            cursor: pointer;
+        }
+
+        .btn a {
+            margin-left: 15px;
+            text-decoration: none;
+            font-size: 15px;
+            color: black;
+            position: relative;
+        }
+
+        .btn a::after {
+            content: '';
+            display: block;
+            height: 2px;
+            background-color: black;
+            position: absolute;
+            left: 0;
+            right: 0;
+            transform-origin: left;
+            transform: scale(0.1);
+            transition: transform ease-in-out 0.5s;
+        }
+
+        .btn a:hover::after {
+            transform: scale(1.0);
+        }
+
+        .content3 {
+            width: 95%;
+            margin: auto;
+            display: flex;
+            gap: 80px;
+            padding: 64px;
+        }
+
+        .img3 {
+            width: 100%;
+        }
+
+        .img3 img {
+            width: 100%;
+        }
+
+        .content4 {
+            width: 95%;
+            margin: auto;
+            display: flex;
+            gap: 80px;
+            padding: 64px;
+        }
+
+        .img4 {
+            width: 100%;
+        }
+
+        .img4 img {
+            width: 100%;
+        }
+
+        .content5 {
+            width: 100%;
+            background-color: whitesmoke;
+            padding: 64px;
+            gap: 8%;
+        }
+
+        .bton {
+            width: 100%;
+            font-size: 35px;
+            text-align: left;
+            max-width: 1140px;
+            margin: auto;
+        }
+
+        .img5 {
+            width: 100%;
+        }
+
+        .img5 img {
+            width: 100%;
+        }
+
+        .content6 {
+            display: flex;
+            width: 100%;
+            margin: auto;
+            gap: 2rem;
+            max-width: 1140px;
+        }
+
+        .img6,
+        .img7 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            padding: 25px;
+            font-size: 13px;
+        }
+
+        .div {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .text3 {
+            padding-left: 20px;
+        }
+
+        .icon {
+            display: flex;
+        }
+
+        .img7 i {
+            margin-left: 25px;
+        }
+
+        .img6 i {
+            margin-left: 25px;
+        }
+
+        .icons {
+            display: flex;
+            align-items: flex-start;
+            gap: 50px;
+            font-size: 25px;
+            color: #000;
+        }
+
+        .icons i:hover {
+            color: rgb(170, 161, 161);
+            cursor: pointer;
+        }
+
+        .icons h5:hover {
+            color: rgb(170, 161, 161);
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 95px;
+            font-size: 15px;
+            line-height: 40px;
+        }
+
+        .footer {
+            width: 100%;
+            display: flex;
+        }
+
+        footer ul li {
+            list-style: none;
+        }
+
+        footer ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer1 {
+            width: 25%;
+        }
+
+        .btns {
+            padding-bottom: 50px;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        .social1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .social {
+            padding: 65px 0;
+        }
+
+        .media {
+            padding: 50px 0px 50px 0px;
+            cursor: pointer;
+        }
+
+        i.fa-solid.fa-location-dot {
+            padding-left: 20px;
+        }
+
+        .social {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 70px;
+            padding: 50px 0px 50px 0px;
+        }
+
+        .social i {
+            padding: 20px;
+            border: 1px;
+            border-radius: 10px;
+            transition: 1s;
+        }
+
+        .social i:hover {
+            cursor: pointer;
+            background-color: #80808080;
+        }
+
+        .uber {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .text4 p {
+            color: rgb(143, 138, 138);
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .text4 p:hover {
+            color: whitesmoke;
+        }
+
+        .test a {
+            text-decoration: none;
+            list-style: none;
+            color: rgb(143, 138, 138);
+            cursor: pointer;
+
+        }
+
+        .test a:hover {
+            color: whitesmoke;
+        }
+
+        .app img {
+            height: 55px;
+            width: 150px;
+        }
+
+        .app {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .suggest button {
+            background-color: #fff;
+            color: #000;
+            border-radius: 20px;
+            border: none;
+            width: 90px;
+            height: 35px;
+            cursor: pointer;
+        }
+
+        .suggest button:hover {
+            background-color: #CBCBCB;
+        }
+
+        .design {
+            display: flex;
+            border: none;
+            outline: none;
+            background-color: whitesmoke;
+            width: 32%;
+            border-radius: 10px;
+            align-items: center;
+            padding-left: 12px;
+        }
+
+        .calender img {
+            width: 160px;
+            height: auto;
+        }
+
+        .ride {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 12px;
+
+        }
+
+        .ride h5 {
+            font-size: 15px;
+        }
+
+        .suggest {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .head {
+            width: 95%;
+            margin: auto;
+            padding: 64px;
+        }
+
+        .head h2 {
+            font-size: 36px;
+            margin-bottom: 4%;
+        }
+
+
+        @media (min-width:300px) and (max-width:576px) {
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(50vh - 60px);
+                background-color: #363232;
+                flex-direction: column;
+                align-items: center;
+                transition: left 0.3s ease-in-out;
+                z-index: 1;
+            }
+
+            .logo-links .nav-links {
+                display: flex;
+                align-items: flex-start;
+                flex-direction: column;
+                flex: 1 1 auto;
+                list-style: none;
+                padding-left: 50px;
+                padding-top: 28px;
+                gap: 10px;
+                background-color: #fff;
+            }
+
+            .dropdown .dropbtn {
+                color: black;
+                background-color: #fff;
+            }
+
+            .dropdown-content {
+                display: none;
+            }
+
+            .none {
+                display: none;
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: rgb(190, 178, 178);
+                transition: color 0.3s;
+                display: none;
+            }
+
+            .dropdown .dropbtn button:hover {
+                background-color: white;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .menu-icon {
+                display: block;
+                color: white;
+                position: absolute;
+                right: 16px;
+            }
+
+            .nav-links button,
+            .navi button {
+                padding: 10px;
+                border-radius: 20px;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                color: black;
+                font-size: 20px;
+                background-color: white;
+            }
+
+            button.btn {
+                background-color: #fff;
+                color: #000;
+                padding: 10px;
+                border-radius: 20px;
+                /* gap: 45px; */
+                position: absolute;
+                right: 59px;
+                top: 7px;
+                font-size: 16px;
+            }
+
+            .menu-toggle:checked+.menu-icon+.nav-links {
+                left: 0;
+            }
+        }
+
+        @media (min-width:300px) and (max-width:576px) {
+            .content1 {
+                padding: 15px;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .text1 {
+                width: 100%;
+                padding-bottom: 20px;
+            }
+
+            .pick {
+                max-width: 270px;
+                width: 100%;
+            }
+
+            .location {
+                width: 270px;
+            }
+
+            .int input {
+                width: 270px;
+            }
+
+            .drop {
+                position: absolute;
+                right: 15px;
+            }
+
+            .Today input {
+                width: 8rem;
+            }
+
+            .now select {
+                width: 8rem;
+            }
+
+            .img1 {
+                width: 100%;
+                height: 50%;
+            }
+
+            .img1 iframe {
+                height: 350px;
+                width: 100%;
+            }
+
+        }
+
+        @media (min-width:300px) and (max-width:576px) {
+            .head {
+                padding: 10px;
+            }
+
+            .head h2 {
+                font-size: 25px;
+                margin-bottom: 25px;
+            }
+
+            .suggest {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .design {
+                width: 100%;
+                font-size: 15px;
+            }
+
+            .ride p {
+                font-size: 12px;
+            }
+        }
+
+        @media (min-width:300px) and (max-width:576px) {
+            .content2 {
+                flex-wrap: wrap-reverse;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .text2 {
+                width: 100%;
+                padding: 0px;
+                padding-bottom: 40px;
+            }
+
+            .text2 h1 {
+                font-size: 30px;
+            }
+
+            .text2 p {
+                font-size: 15px;
+            }
+
+            .btn {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .btn a {
+                margin: 0px;
+            }
+
+            .img2 {
+                width: 100%;
+            }
+
+            .img2 img {
+                width: 100%;
+            }
+        }
+
+        @media (min-width:300px) and (max-width:576px) {
+            .content3 {
+                flex-wrap: wrap;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .text2 {
+                width: 100%;
+                padding: 0px;
+                padding-bottom: 20px;
+            }
+
+            .img3 {
+                width: 100%;
+            }
+
+            .img3 img {
+                width: 100%;
+            }
+        }
+
+        @media (min-width:300px) and (max-width:576px) {
+            .content4 {
+                flex-wrap: wrap-reverse;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .text2 {
+                width: 100%;
+                padding: 0px;
+                padding-bottom: 20px;
+            }
+
+            .img5 {
+                width: 100%;
+            }
+
+            .img5 img {
+                width: 100%;
+            }
+
+            .content5 {
+                padding: 15px;
+            }
+
+            .bton {
+                font-size: 25px;
+            }
+        }
+
+        @media (min-width:300px) and (max-width:576px) {
+            .content6 {
+                flex-wrap: wrap;
+            }
+
+            .img6 {
+                width: 100%;
+            }
+
+            .img6 img {
+                width: 30%;
+            }
+
+            .text3 {
+                width: 50%;
+                font-size: 8px;
+            }
+
+            .text3 p {
+                display: none;
+            }
+
+            .img7 {
+                width: 100%;
+            }
+
+            .img7 img {
+                width: 30%;
+            }
+        }
+
+        @media (min-width:300px) and (max-width:576px) {
+            footer {
+                padding: 0px;
+            }
+
+            .footer {
+                display: flex;
+                gap: 15px;
+                flex-direction: column;
+                padding-left: 25px;
+            }
+
+            .footer1 {
+                width: 100%;
+            }
+
+            .social {
+                gap: 15px;
+                padding: 0px;
+                padding-left: 15px;
+            }
+
+            .social1 {
+                padding: 10px 0px;
+                flex-wrap: wrap;
+            }
+
+            .social i {
+                padding: 10px;
+            }
+
+            .media {
+                padding: 0px;
+                padding-left: 25px;
+                font-size: 12px;
+            }
+
+            .app {
+                padding-top: 15px;
+                padding-left: 20px;
+            }
+
+            .uber {
+                flex-direction: column;
+                padding-left: 25px;
+            }
+
+            .btns {
+                padding-left: 25px;
+            }
+
+            .test a {
+                padding: 0;
+            }
+        }
+
+
+        @media (min-width:576px) and (max-width:768px) {
+            .content1 {
+                padding: 15px;
+                flex-wrap: wrap;
+            }
+
+            .text1 {
+                width: 100%;
+               display: flex;
+               align-items: center;
+                padding-bottom: 20px;
+            }
+
+            .img1 {
+                width: 100%;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(50vh - 60px);
+                background-color: #363232;
+                flex-direction: column;
+                align-items: center;
+                transition: left 0.3s ease-in-out;
+                z-index: 1;
+            }
+
+            .logo-links .nav-links {
+                display: flex;
+                align-items: flex-start;
+                flex-direction: column;
+                flex: 1 1 auto;
+                list-style: none;
+                padding-left: 50px;
+                padding-top: 28px;
+                gap: 10px;
+                background-color: #fff;
+            }
+
+            .dropdown .dropbtn {
+                color: black;
+                background-color: #fff;
+            }
+
+            .dropdown-content {
+                display: none;
+            }
+
+            .none {
+                display: none;
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: rgb(190, 178, 178);
+                transition: color 0.3s;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .menu-icon {
+                display: block;
+                color: white;
+                position: absolute;
+                right: 16px;
+            }
+
+            .nav-links button,
+            .navi button {
+                padding: 10px;
+                border-radius: 20px;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                color: black;
+                font-size: 20px;
+                background-color: white;
+            }
+
+            button.btn {
+                background-color: #fff;
+                color: #000;
+                padding: 10px;
+                border-radius: 20px;
+                position: absolute;
+                right: 59px;
+                top: 7px;
+                font-size: 16px;
+            }
+
+            .menu-toggle:checked+.menu-icon+.nav-links {
+                left: 0;
+            }
+        }
+
+        @media (min-width:576px) and (max-width:768px) {
+            .head {
+                padding: 10px;
+            }
+
+            .suggest {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .design {
+                width: 48%;
+                font-size: 15px;
+                justify-content: space-between;
+            }
+        }
+
+        @media (min-width:576px) and (max-width:768px) {
+            .content2 {
+                flex-wrap: wrap-reverse;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .text2 {
+                width: 100%;
+                padding: 0px;
+                padding-bottom: 40px;
+            }
+
+            .text2 h1 {
+                font-size: 35px;
+            }
+
+            .text2 p {
+                font-size: 20px;
+            }
+
+            .btn {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .btn a {
+                margin: 0px;
+            }
+
+            .img2 {
+                width: 100%;
+            }
+
+            .img2 img {
+                width: 100%;
+            }
+        }
+
+        @media (min-width:576px) and (max-width:768px) {
+            .content3 {
+                flex-wrap: wrap;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .text2 {
+                width: 100%;
+                padding: 0px;
+                padding-bottom: 20px;
+            }
+
+            .img3 {
+                width: 100%;
+            }
+
+            .img3 img {
+                width: 100%;
+            }
+        }
+
+        @media (min-width:576px) and (max-width:768px) {
+            .content4 {
+                flex-wrap: wrap-reverse;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .text2 {
+                width: 100%;
+                padding: 0px;
+                padding-bottom: 20px;
+            }
+
+            .img5 {
+                width: 100%;
+            }
+
+            .img5 img {
+                width: 100%;
+            }
+        }
+
+        @media (min-width:576px) and (max-width:768px) {
+            .content6 {
+                flex-wrap: wrap;
+            }
+
+            .img6 {
+                width: 100%;
+            }
+
+            .img6 img {
+                width: 30%;
+            }
+
+            .text3 {
+                width: 50%;
+                font-size: 8px;
+            }
+
+            .text3 p {
+                display: none;
+            }
+
+            .img7 {
+                width: 100%;
+            }
+
+            .img7 img {
+                width: 30%;
+            }
+
+            .bton {
+                text-align: left;
+                font-size: 20px;
+                padding-left: 0px;
+            }
+        }
+
+        @media (min-width:576px) and (max-width:768px) {
+            footer {
+                padding: 0px;
+            }
+
+            .footer {
+                width: 100%;
+                display: flex;
+                gap: 50px;
+                padding-left: 25px;
+                flex-wrap: wrap;
+            }
+
+            .footer1 {
+                width: 40%;
+            }
+
+            .social {
+                gap: 15px;
+                padding: 0px;
+                padding-left: 15px;
+            }
+
+            .social1 {
+                width: 50%;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .social i {
+                padding: 10px;
+            }
+
+            .media {
+                padding: 0px;
+                padding-left: 25px;
+            }
+
+            .app {
+                padding-top: 15px;
+                padding-left: 20px;
+            }
+
+            .uber {
+                width: 40%;
+                flex-direction: column;
+                padding-left: 25px;
+            }
+
+            .btns {
+                padding-left: 25px;
+            }
+        }
+
+        @media (min-width:768px) and (max-width:992px) {
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(50vh - 60px);
+                background-color: #363232;
+                flex-direction: column;
+                align-items: center;
+                transition: left 0.3s ease-in-out;
+                z-index: 1;
+            }
+
+            .logo-links .nav-links {
+                display: flex;
+                align-items: flex-start;
+                flex-direction: column;
+                flex: 1 1 auto;
+                list-style: none;
+                padding-left: 50px;
+                padding-top: 28px;
+                gap: 10px;
+                background-color: #fff;
+            }
+
+            .dropdown .dropbtn {
+                color: black;
+                background-color: #fff;
+            }
+
+            .dropdown-content {
+                display: none;
+            }
+
+            .none {
+                display: none;
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: rgb(190, 178, 178);
+                transition: color 0.3s;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .menu-icon {
+                display: block;
+                color: white;
+                position: absolute;
+                right: 16px;
+            }
+
+            .nav-links button,
+            .navi button {
+                padding: 10px;
+                border-radius: 20px;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                color: black;
+                font-size: 20px;
+                background-color: white;
+            }
+
+            button.btn {
+                background-color: #fff;
+                color: #000;
+                padding: 10px;
+                border-radius: 20px;
+                position: absolute;
+                right: 59px;
+                top: 7px;
+                font-size: 16px;
+            }
+
+            .menu-toggle:checked+.menu-icon+.nav-links {
+                left: 0;
+            }
+
+            .content1 {
+                padding: 15px;
+                flex-wrap: wrap;
+            }
+
+            .text1 {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                padding-bottom: 20px;
+            }
+            .icons{
+                justify-content: center;
+            }
+            /* .int{
+                width: 50%;
+                margin: auto;
+            }
+            .cal{
+                width: 50%;
+                margin: 15px auto;
+            }
+            #btn{
+                width: 65%;
+            } */
+
+            .img1 {
+                width: 100%;
+            }
+        }
+
+        @media (min-width:768px) and (max-width:992px) {
+            .head {
+                padding: 10px;
+            }
+
+            .suggest {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .design {
+                width: 48%;
+                font-size: 20px;
+                justify-content: space-between;
+            }
+        }
+
+        @media (min-width:768px) and (max-width:992px) {
+            .content2 {
+                flex-wrap: wrap-reverse;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .text2 {
+                width: 100%;
+                padding: 0px;
+                padding-bottom: 40px;
+            }
+
+            .btn {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .btn a {
+                margin: 0px;
+            }
+
+            .img2 {
+                width: 100%;
+            }
+        }
+
+        @media (min-width:768px) and (max-width:992px) {
+            .content3 {
+                flex-wrap: wrap;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .text2 {
+                width: 100%;
+                padding: 0px;
+                padding-bottom: 20px;
+            }
+
+            .img3 {
+                width: 100%;
+            }
+        }
+
+        @media (min-width:768px) and (max-width:992px) {
+            .content4 {
+                flex-wrap: wrap-reverse;
+                padding: 15px;
+                gap: 15px;
+            }
+
+        }
+
+        .text2 {
+            width: 100%;
+            padding: 0px;
+            padding-bottom: 20px;
+        }
+
+        .img5 {
+            width: 100%;
+        }
+        }
+
+        @media (min-width:768px) and (max-width:992px) {
+            .content6 {
+                flex-wrap: wrap;
+            }
+
+            .img6 {
+                width: 100%;
+            }
+
+            .img6 img {
+                width: 30%;
+            }
+
+            .text3 {
+                width: 50%;
+                font-size: 15px;
+            }
+
+            .img7 {
+                width: 100%;
+            }
+
+            .img7 img {
+                width: 30%;
+            }
+
+            .bton {
+                text-align: left;
+                font-size: 30px;
+                padding-left: 0px;
+            }
+        }
+
+        @media (min-width:768px) and (max-width:992px) {
+            footer {
+                padding: 0px;
+            }
+
+            .footer {
+                width: 100%;
+                display: flex;
+                gap: 50px;
+                padding-left: 25px;
+                flex-wrap: wrap;
+                font-size: 22px;
+                line-height: 50px;
+            }
+
+            .footer1 {
+                width: 45%;
+            }
+
+            .social {
+                gap: 15px;
+                padding: 0px;
+                padding-left: 10px;
+            }
+
+            .social1 {
+                gap: 25px;
+                width: 40%;
+                padding: 20px 0px;
+                font-size: 25px;
+            }
+
+            .social i {
+                padding: 10px;
+            }
+
+            .media {
+                padding: 0px;
+                padding-left: 20px;
+            }
+
+            .app {
+                padding-top: 15px;
+                padding-left: 20px;
+            }
+
+            .uber {
+                flex-wrap: wrap;
+                width: 37%;
+                padding-left: 25px;
+            }
+
+            .btns {
+                padding-left: 25px;
+                line-height: 50px;
+                font-size: 25px;
+            }
+        }
+
+        @media (min-width:992px) and (max-width:1200px) {
+            .content1 {
+                padding: 15px;
+                flex-wrap: wrap;
+            }
+
+            .text1 {
+               width: 100%;
+               display: flex;
+               align-items: center;
+                padding-bottom: 20px;
+            }
+
+            .img1 {
+                width: 100%;
+            }
+
+            .head {
+                padding: 10px;
+            }
+
+            .suggest {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .design {
+                width: 48%;
+                font-size: 20px;
+                justify-content: space-between;
+            }
+
+            .ride p {
+                font-size: 15px;
+            }
+
+            .content2 {
+                flex-wrap: wrap-reverse;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .text2 {
+                width: 100%;
+                padding: 0px;
+                padding-bottom: 40px;
+            }
+
+            .text2 h1 {
+                font-size: 38px;
+            }
+
+            .text2 p {
+                font-size: 18px;
+            }
+
+            .btn {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .btn a {
+                margin: 0px;
+            }
+
+            .img2 {
+                width: 100%;
+            }
+
+            .content3 {
+                flex-wrap: wrap;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .text2 {
+                width: 100%;
+                padding: 0px;
+                padding-bottom: 20px;
+            }
+
+            .img3 {
+                width: 100%;
+            }
+
+            .content4 {
+                flex-wrap: wrap-reverse;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .text2 {
+                width: 100%;
+                padding: 0px;
+                padding-bottom: 20px;
+            }
+
+            .img5 {
+                width: 100%;
+            }
+
+            .content6 {
+                flex-wrap: wrap;
+            }
+
+            .img6 {
+                width: 100%;
+            }
+
+            .img6 img {
+                width: 17%;
+            }
+
+            .text3 {
+                width: 50%;
+                font-size: 13px;
+            }
+
+            .img7 {
+                width: 100%;
+            }
+
+            .img7 img {
+                width: 17%;
+            }
+
+            .bton {
+                text-align: left;
+                font-size: 30px;
+                padding-left: 0px;
+            }
+
+            footer {
+                padding: 0px;
+            }
+
+            .footer {
+                width: 100%;
+                flex-wrap: wrap;
+                display: flex;
+                gap: 50px;
+                padding-left: 25px;
+                font-size: 17px;
+            }
+
+            .footer1 {
+                width: 40%;
+            }
+
+            .social {
+                gap: 15px;
+                padding: 0px;
+                padding-left: 10px;
+            }
+
+            .social1 {
+                width: 40%;
+                gap: 20px;
+                padding: 10px 0px;
+            }
+
+            .social i {
+                padding: 10px;
+            }
+
+            .media {
+                padding: 0px;
+                padding-left: 20px;
+            }
+
+            .app {
+                padding-top: 15px;
+                padding-left: 20px;
+            }
+
+            .uber {
+                width: 40%;
+                flex-direction: column;
+                padding-left: 25px;
+            }
+
+            .btns {
+                padding-left: 25px;
+            }
+
+            .text1 {
+                width: 50%;
+                margin: auto;
+            }
+
+            .none {
+                display: none;
+            }
+        }
+
+        @media (min-width:1400px) and (max-width:2000px) {
+            .content {
+                width: 80%;
+                margin: auto;
+            }
+
+            .foot {
+                width: 80%;
+                margin: auto;
+            }
+
+            .header {
+                width: 85%;
+                margin: auto;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="header">
+                <div class="logo-links">
+                    <p class="logo">Uber</p>
+                    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+                    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+                    <div class="nav-links" style="color: #fff;">
+                        <button>Ride</button>
+                        <button>Drive</button>
+                        <button>Business</button>
+                        <div class="dropdown">
+                            <button class="dropbtn">About
+                                <i class="fa-solid fa-chevron-down" style="color: #f4f3f7;"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="#">About us</a>
+                                <a href="#">Our offerings</a>
+                                <a href="#">How uber works</a>
+                                <a href="#">Impact</a>
+                                <a href="#">Diversity,equity,and Inclusion</a>
+                                <a href="#">Sustainability</a>
+                                <a href="#">Explore</a>
+                                <a href="#">Newsroom</a>
+                                <a href="#">Investors relation</a>
+                                <a href="#">Autonomous</a>
+                                <a href="#">Blog</a>
+                                <a href="#">Careers</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navi">
+                        <button class="none"><i class="fa-solid fa-globe"></i>EN</button>
+                        <button class="none">Help</button>
+                        <button class="btn">Sign up</button>
+                    </div>
+                </div>
+        </nav>
+    </header>
+    <div class="content">
+        <div class="content1">
+            <div class="text1">
+                <h1>Go anywhere with Uber</h1>
+                <div class="icons">
+                    <div class="car">
+                        <i class="fa-solid fa-car"></i>
+                        <h5>Car</h5>
+                    </div>
+                    <div class="cube">
+                        <i class="fa-solid fa-cube"></i>
+                        <h5>Package</h5>
+                    </div>
+                </div>
+                <form>
+                    <div class="int">
+                        <div class="pick">
+                            <i class="fa-solid fa-circle dot"></i>
+                            <input type="Pickup Location" name="Pickup Location" placeholder="Pickup Location">
+                            <i class="fa-solid fa-location-arrow drop"></i>
+
+                        </div>
+                        <div class="location">
+                            <i class="fa-solid fa-square square"></i>
+                            <input type="Dropoff location" name="Dropoff location" placeholder="Dropoff location">
+                        </div>
+                    </div>
+                    <div class="cal">
+                        <div class="Today">
+                            <input type="date" name="data" placeholder="Today">
+                        </div>
+
+                        <div class="now">
+                            <label for="now"></label>
+                            <i class="fa-solid fa-clock clock"></i>
+                            <select id="Now" name="Now" data-name="Now" class="Now">
+                                <option value="">Now</option>
+                                <option value="">10:30</option>
+                                <option value="">10:45</option>
+                                <option value="">11:00</option>
+                                <option value="">11:15</option>
+                                <option value="">11:30</option>
+                                <option value="">11:45</option>
+                                <option value="">12:00</option>
+                                <option value="">12:15</option>
+                                <option value="">12:30</option>
+                                <option value="">12:45</option>
+                                <option value="">01:00</option>
+                                <option value="">01:15</option>
+                                <option value="">01:30</option>
+                                <option value="">01:45</option>
+                                <option value="">02:00</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="btn"><button>See prices</button></div>
+                </form>
+            </div>
+
+            <div class="img1">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1943.3148168401453!2d80.26300233836699!3d13.05923075965778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d9a9c244571%3A0x8795a1a0b7a4534b!2sExpress%20Avenue!5e0!3m2!1sen!2sin!4v1725943372793!5m2!1sen!2sin"
+                    width="600" height="550" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="head">
+            <h2>Suggestions</h2>
+            <div class="suggest">
+
+                <div class="design">
+                    <div class="ride">
+                        <h5>Ride</h5>
+                        <p>Go anywhere with Uber. Request a ride, hop in, and go.</p>
+                        <button>Details</button>
+                    </div>
+                    <div class="request-car">
+                        <img src="ride.jpg">
+                    </div>
+                </div>
+                <div class="design">
+                    <div class="ride">
+                        <h5>Package</h5>
+                        <p>Uber Connect makes same-day delivery easier than ever.</p>
+                        <button>Details</button>
+                    </div>
+                    <div class="request-car">
+                        <img src="connect.jpg">
+                    </div>
+                </div>
+                <div class="design">
+                    <div class="ride">
+                        <h5>Reserve</h5>
+                        <p>Reserve your ride in advance so you can relax on the day of your trip.</p>
+                        <button>Details</button>
+                    </div>
+                    <div class="calender">
+                        <img src="reserve_clock.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content2">
+            <div class="img2">
+                <img src="image1.jpg">
+            </div>
+            <div class="text2">
+                <h1>Drive when you want, make what you need</h1>
+                <p>Make money on your schedule with deliveries or rides—or both. You can use your own car or choose
+                    a
+                    rental
+                    through Uber.</p>
+                <div class="btn">
+                    <button>Get started</button>
+                    <a href="#">Already have an account? Sign in</a>
+                </div>
+            </div>
+        </div>
+        <div class="content3">
+            <div class="text2">
+                <h1>The Uber you know, reimagined for business</h1>
+                <p>Uber for Business is a platform for managing global rides and meals, and local deliveries, for
+                    companies of any size.</p>
+                <div class="btn">
+                    <button>Get started</button>
+                    <a href="#">Check out our solutions</a>
+                </div>
+            </div>
+            <div class="img3">
+                <img src="image2.jpg">
+            </div>
+        </div>
+        <div class="content4">
+            <div class="img5">
+                <img src="image3.jpg">
+            </div>
+            <div class="text2">
+                <h1>Make money by renting out your car</h1>
+                <p>Connect with thousands of drivers and earn more per week with Uber’s free fleet management tools.
+                </p>
+                <div class="btn">
+                    <button>Get started</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="content5">
+        <div class="div">
+            <h1 class="bton">It’s easier in the apps</h1>
+            <div class="content6">
+                <div class="img6">
+                    <img src="image4.jpg">
+                    <div class="text3">
+                        <h1>Download the Uber app</h1>
+                        <p>Scan to download</p>
+                    </div><span><i class="fa-solid fa-arrow-right fa-beat-fade"></i></span>
+                </div>
+                <div class="img7">
+                    <img src="image4.jpg">
+                    <div class="text3">
+                        <h1>Download the Uber app</h1>
+                        <p>Scan to download</p>
+                    </div><span><i class="fa-solid fa-arrow-right fa-beat-fade"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="foot">
+            <div class="btns">
+                <h4>Uber</h4>
+                <p>Visit Help Center</p>
+            </div>
+            <div class="footer">
+                <div class="footer1">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Our offerings</a></li>
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="">Investors</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer1">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#">Ride</a></li>
+                        <li><a href="#">Drive</a></li>
+                        <li><a href="#">Deliver</a></li>
+                        <li><a href="">Eat</a></li>
+                        <li><a href="#">Uber for Business</a></li>
+                        <li><a href="#">Uber Freight</a></li>
+                        <li><a href="#">Gift cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer1">
+                    <h3>Global citizenship</h3>
+                    <ul>
+                        <li><a href="#">Safety</a></li>
+                        <li><a href="#">Diversity and Inclusion</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                    </ul>
+                </div>
+                <div class="footer1">
+                    <h3>Travel</h3>
+                    <ul>
+                        <li><a href="#">Reserve</a></li>
+                        <li><a href="#">Airports</a></li>
+                        <li><a href="#">Cities</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="social1">
+                <div class="social">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div class="media">
+                    <i class="fa-solid fa-globe">
+                    </i> English
+                    <i class="fa-solid fa-location-dot"></i> Hyderabad
+                </div>
+            </div>
+
+            <div class="app">
+                <div class="img8">
+                    <img src="google.jpg">
+                </div>
+                <div class="img9">
+                    <img src="apple1.jpg">
+                </div>
+            </div>
+            <div class="uber">
+                <div class="text4">
+                    <p>© 2024 Uber Technologies Inc.</p>
+                </div>
+                <div class="test">
+                    <a href="#">Privacy</a>
+                    <a href="#">Accessibility</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
